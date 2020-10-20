@@ -13,9 +13,9 @@ const {
 
 const { 
     create
-} = require('../controllers/category');
+} = require('../controllers/product');
 
-router.post('/category/create/:userId', create, isAuth, isAdmin, requireSignin);
+router.post('/product/create/:userId', create, isAuth, isAdmin, requireSignin);
 
 router.param('userId', userById)
 
