@@ -12,11 +12,15 @@ const {
 } = require('../controllers/user');
 
 const { 
-    create
+    categoryById,
+    create,
+    read,
 } = require('../controllers/category');
 
+router.get('/category/:categoryId', read);
 router.post('/category/create/:userId', create, isAuth, isAdmin, requireSignin);
 
-router.param('userId', userById)
+router.param('userId', userById);
+router.param('categoryId', categoryById);
 
 module.exports = router;
