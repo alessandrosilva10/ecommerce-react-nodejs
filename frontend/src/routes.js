@@ -26,52 +26,47 @@ import Icons from "views/examples/Icons.js";
 var routes = [
   {
     path: "/index",
-    name: "Dashboard",
-    icon: "ni ni-tv-2 text-primary",
+    name: "Início",
+    icon: "fas fa-home",
     component: Index,
     layout: "/admin"
   },
   {
+    path: "/user-profile",
+    name: "Meu Perfil",
+    icon: "fas fa-female",
+    component: Profile,
+    layout: "/admin"
+  },
+  {
     path: "/icons",
-    name: "Icons",
-    icon: "ni ni-planet text-blue",
+    name: "Roupa Feminina",
+    icon: 'fas fa-user-tie',
     component: Icons,
     layout: "/admin"
   },
   {
     path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
+    name: "Roupa Masculina",
+    icon: 'fas fa-tshirt',
     component: Maps,
     layout: "/admin"
   },
+  ,
   {
-    path: "/user-profile",
-    name: "User Profile",
-    icon: "ni ni-single-02 text-yellow",
-    component: Profile,
+    path: "/maps",
+    name: "Calçados",
+    icon: 'fas fa-socks',
+    component: Maps,
     layout: "/admin"
   },
+  ,
   {
-    path: "/tables",
-    name: "Tables",
-    icon: "ni ni-bullet-list-67 text-red",
-    component: Tables,
+    path: "/maps",
+    name: "Joias",
+    icon: "fas fa-ring",
+    component: Maps,
     layout: "/admin"
   },
-  {
-    path: "/login",
-    name: "Login",
-    icon: "ni ni-key-25 text-info",
-    component: Login,
-    layout: "/auth"
-  },
-  {
-    path: "/register",
-    name: "Register",
-    icon: "ni ni-circle-08 text-pink",
-    component: Register,
-    layout: "/auth"
-  }
 ];
 export default routes;

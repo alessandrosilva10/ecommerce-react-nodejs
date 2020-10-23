@@ -44,10 +44,9 @@ exports.signin = (req, res) => {
         
         //return response with user and token to frontend client
         const {_id, name, email, role } = user
-        return res.json({token, user: {_id, email, name, role}});
+        return res.json({token, status: 200, user: {_id, email, name, role}});
     });
 };
-
 
 exports.signout = (req, res) => {
     res.clearCookie('token');

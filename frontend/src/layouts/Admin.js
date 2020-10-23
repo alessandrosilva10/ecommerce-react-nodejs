@@ -23,7 +23,7 @@ import { Container } from "reactstrap";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import AdminFooter from "components/Footers/AdminFooter.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-
+import { withCookies } from "react-cookie";
 import routes from "routes.js";
 
 class Admin extends React.Component {
@@ -68,7 +68,8 @@ class Admin extends React.Component {
           logo={{
             innerLink: "/admin/index",
             imgSrc: require("assets/img/brand/argon-react.png"),
-            imgAlt: "..."
+            imgAlt: "...",
+
           }}
         />
         <div className="main-content" ref="mainContent">
@@ -80,13 +81,13 @@ class Admin extends React.Component {
             {this.getRoutes(routes)}
             <Redirect from="*" to="/admin/index" />
           </Switch>
-          <Container fluid>
+          {/*<Container fluid>
             <AdminFooter />
-          </Container>
+          </Container>*/}
         </div>
       </>
     );
   }
 }
 
-export default Admin;
+export default withCookies(Admin);

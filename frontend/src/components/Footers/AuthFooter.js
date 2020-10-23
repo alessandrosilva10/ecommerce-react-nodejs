@@ -71,7 +71,7 @@ class Login extends React.Component {
                       href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md?ref=adr-auth-footer"
                       target="_blank"
                     >
-                      MIT License
+                   
                     </NavLink>
                   </NavItem>
                 </Nav>
