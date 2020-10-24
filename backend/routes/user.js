@@ -4,20 +4,18 @@ const router = express.Router();
 const { 
     isAuth,
     isAdmin,
-    requireSignin,
+    requireSignin
 } = require('../controllers/auth');
 
 const { 
     userById,
     read,
-    update
+    update,
+    isAdminValidation
 } = require('../controllers/user');
 
-router.get('/secret/:userId', requireSignin, isAuth, isAdmin, (req, res) => {
-    res.json({
-        user: req.profile
-    });
-});
+// Admin Validator
+router.get('/secret/:userId', requireSignin, isAuth, isAdmin, isAdminValidation);
 
 router.get('/user/:userId', requireSignin, isAuth, read);
 router.put('/user/:userId', requireSignin, isAuth, update);

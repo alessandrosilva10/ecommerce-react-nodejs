@@ -60,13 +60,19 @@ var routes = [
     component: Maps,
     layout: "/admin"
   },
-  ,
   {
     path: "/maps",
     name: "Joias",
     icon: "fas fa-ring",
     component: Maps,
     layout: "/admin"
+  },
+  {
+    path: "/login",
+    name: "Login",
+    icon: "fas fa-ring",
+    component: Login,
+    layout: "/auth"
   },
 ];
 export default routes;

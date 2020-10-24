@@ -12,7 +12,6 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const categoryRoutes = require('./routes/category');
 const productRoutes = require('./routes/product');
-const validatorRoutes = require('./routes/validator');
 
 const app = express();
 
@@ -37,9 +36,8 @@ app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', productRoutes);
-app.use('/api', validatorRoutes);
-
-const port = process.env.PORT || 8000;
+app.disable('etag');
+const port = process.env.PORT;
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)

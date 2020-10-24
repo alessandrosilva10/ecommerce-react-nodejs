@@ -97,6 +97,7 @@ exports.create = (req, res) => {
         }
 
         let product = new Product(fields);
+        
         if(files.photo){
             if(files.photo.size > 100000){
                 return res.status(400).json({
@@ -104,16 +105,18 @@ exports.create = (req, res) => {
                 });
             }
             product.photo.data = fs.readFileSync(files.photo.path);
-            product.photo.contentType  = file.photo.type;
+            product.photo.contentType  = files.photo.type;
         };
-
-        product.save((err, result) => {
+ 
+        product.save((error, result) => {
             if(err){
+                console.log("errir")
                 return res.status(400).json({
-                    error: errorHandler(err)
+                    error: errorHandler(error)
                 });
             }
-            res.json(result)
+            console.log(result)
+            res.json(result);
         });
     });
 }
@@ -227,3 +230,11 @@ exports.listBySearch = (req, res) => {
             });
         });
 };
+
+exports.photo = (req, res, next) => {
+    if(req.product.photo.data){
+        res.set('Content-Type', req.product.photo.contentType)
+        return res.send(req.product.photo.data);
+    }
+    next();
+}

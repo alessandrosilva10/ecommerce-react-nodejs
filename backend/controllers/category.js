@@ -55,10 +55,10 @@ exports.read = (req, res) => {
 
 exports.create = (req, res) => {
     const category = new Category(req.body);
-    category.save((err, data) => {
+    category.save((error, data) => {
         if(error){
             return res.status(400).json({
-                error: errorHandler(err)
+                error: errorHandler(error)
             });
         }
         res.json({ data });

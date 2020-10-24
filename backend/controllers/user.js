@@ -12,6 +12,10 @@ exports.userById = (req, res, next, id) => {
     });
 };
 
+exports.isAdminValidation = (req, res) => {
+    return res.json({"status": 200});
+}
+
 exports.read = (req, res) => {
     req.profile.hashed_password = undefined;
     req.profile.salt = undefined;
