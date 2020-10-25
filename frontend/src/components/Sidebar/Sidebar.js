@@ -56,12 +56,21 @@ var ps;
 
 class Sidebar extends React.Component {
   state = {
-    collapseOpen: false
+    collapseOpen: false,
+
   };
+
+  
+
   constructor(props) {
     super(props);
     this.activeRoute.bind(this);
-  }
+      var role = 0;
+      if(localStorage.getItem('token_jwt')){
+        this.role = JSON.parse(localStorage.getItem('token_jwt')).user.role;
+      } 
+   }
+
   // verifies if routeName is the one active (in browser input)
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
@@ -111,6 +120,7 @@ class Sidebar extends React.Component {
       };
     }
     return (
+      <>
       <Navbar
         className="navbar-vertical fixed-left navbar-light bg-white"
         expand="md"
@@ -126,7 +136,7 @@ class Sidebar extends React.Component {
             <span className="navbar-toggler-icon" />
           </button>
           {/* Brand */}
-          {logo ? (
+          {/*{logo ? (
             <NavbarBrand className="pt-0" {...navbarBrandProps}>
               <img
                 alt={logo.imgAlt}
@@ -134,7 +144,7 @@ class Sidebar extends React.Component {
                 src={logo.imgSrc}
               />
             </NavbarBrand>
-          ) : null}
+          ) : null}*/}
           {/* User */}
           <Nav className="align-items-center d-md-none">
             <UncontrolledDropdown nav>
@@ -245,12 +255,14 @@ class Sidebar extends React.Component {
             <h6 className="navbar-heading text-muted">Opções</h6>
             {/* Navigation */}
             <Nav className="mb-md-3" navbar>
-            <NavItem>
-                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/alerts?ref=adr-admin-sidebar">
-                  <i className="ni ni-ui-04" />
-                  Meu Perfil
-                </NavLink>
-              </NavItem>
+              {this.role === 1 &&
+                <NavItem>
+                  <NavLink href="/admin/dashboard">
+                    <i className="ni ni-spaceship" />
+                    Dashboard
+                  </NavLink>
+                </NavItem> 
+              }
               <NavItem>
                 <NavLink href="/auth/login">
                   <i className="ni ni-spaceship" />
@@ -272,7 +284,7 @@ class Sidebar extends React.Component {
             </Nav> 
           </Collapse>
         </Container>
-      </Navbar>
+      </Navbar></>
     );
   }
 }

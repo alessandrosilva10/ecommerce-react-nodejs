@@ -25,13 +25,15 @@ import "assets/scss/argon-dashboard-react.scss";
 
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
-import { isAuthenticated } from "./authenticate";
+import { isAuthenticated, isAdmin } from "./authenticate";
+import Dashboard from './components/Dashboard/Dashboard';
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/admin/index" render={props => <AdminLayout {...props} />} />
       {!isAuthenticated() && <Route path="/auth" render={props => <AuthLayout {...props} />} />}
+      <Route path="/admin/index" render={props => <AdminLayout {...props} />} />
+      <Route path="/admin/dashboard" exact component={Dashboard}  />
       <Redirect from="/" to="/admin/index" />
       <Redirect from="*" to="/admin/index" />
     </Switch>

@@ -1,4 +1,6 @@
 import { Redirect } from 'react-router-dom';
+import { API } from './config';
+import React from 'react';
 
 export const authenticate = (res, next) => {
     if(typeof window !== "undefined"){
@@ -13,4 +15,28 @@ export const isAuthenticated = () => {
     }else{
         return false;
     }
+}
+
+
+  
+export const isAdmin = () => {
+    if(JSON.parse(localStorage.getItem('token_jwt')) !== null){
+        fetch(`${API}/secret/${JSON.parse(localStorage.getItem('token_jwt')).user._id}`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${JSON.parse(localStorage.getItem('token_jwt')).token}`
+        },
+        //body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(res => {             
+            if(res.status === 403) {   
+                return 403;
+           }else{
+                return 200;
+            }
+        })
+    } 
 }
