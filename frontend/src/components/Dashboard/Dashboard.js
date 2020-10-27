@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API } from '../../config';
 import { css } from "@emotion/core";
-import ClockLoader from "react-spinners/ClockLoader";
-
+import MoonLoader from "react-spinners/MoonLoader";
+import ForbiddenError from './ForbiddenError';
+import AdminDashboard from './AdminDashboard';
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
@@ -18,7 +19,7 @@ class AwesomeComponent extends React.Component {
       loading: true
     };
   }
- 
+
   render() {
     return (
       <div className="sweet-loading">
@@ -30,9 +31,9 @@ class AwesomeComponent extends React.Component {
           <center>Aguarde um momento estamos analisando as suas credenciais de acesso</center>
           <br />
           <br />
-        <ClockLoader
+        <MoonLoader
           css={override}
-          size={150}
+          size={120}
           color={"#123abc"}
           loading={this.state.loading}
         />
@@ -43,45 +44,51 @@ class AwesomeComponent extends React.Component {
 
 const Dashboard = () => {
     const [status, setStatus] = useState(0);
-    if(JSON.parse(localStorage.getItem('token_jwt')) !== null){
-        fetch(`${API}/secret/${JSON.parse(localStorage.getItem('token_jwt')).user._id}`, {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json',
-            "Content-Type": 'application/json',
-            "Authorization": `Bearer ${JSON.parse(localStorage.getItem('token_jwt')).token}`
-        },
-        //body: JSON.stringify(user)
-        })
-        .then(res => res.json())
-        .then(res => {             
-            if(res.status === 403) {   
-                setStatus(403);
-                //.removeItem('token_jwt');
-            }else{
-                setStatus(200);
-            }
-        })
+    var api = 0;
+    var api_with_token = 0;
+
+    useEffect(() => {
+      sleep(4000)
+    }, []);
+
+    if(JSON.parse(localStorage.getItem('token_jwt'))){
+      api = JSON.parse(localStorage.getItem('token_jwt')).user._id;
+      api_with_token = JSON.parse(localStorage.getItem('token_jwt')).token;
+    }
+
+    fetch(`${API}/secret/${api}`, {
+    method: 'GET',
+    headers: {
+        Accept: 'application/json',
+        "Content-Type": 'application/json',
+        "Authorization": `Bearer ${api_with_token}`
+    },
+    //body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(res => {         
+        if(res.status === 403 || res.status === undefined) {   
+            setStatus(403);
+            //.removeItem('token_jwt');
+        }else{
+            setStatus(200);
+        }
+    })
+    
+    //renderiza o contador/relógio
+    if(status === 0){
+      return <AwesomeComponent />
     }
 
     function sleep(delay) {
-        var start = new Date().getTime();
-        while (new Date().getTime() < start + delay);
-    }
+      var start = new Date().getTime();
+      while (new Date().getTime() < start + delay);
+  }
 
-    if(status === 0){
-        return <AwesomeComponent />
-    }
-    sleep(4000)
     if(status === 403) {  
-        return (
-            <div>
-                <br /><br /><br />
-                <img style={{marginLeft: '35%',}}  src="https://www.wpblog.com/wp-content/uploads/2018/02/4-580x318.jpg" alt="403 - Forbidden" />
-            </div>
-        );
+      return <ForbiddenError />
     }else{
-        return <h1>Dashboard</h1>;
+        return <AdminDashboard />     
     }
 }
 

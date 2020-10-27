@@ -20,15 +20,21 @@ import React, { useState, useEffect } from "react";
 import { Container } from "reactstrap";
 import ProductBySell from './ProductBySell';
 import ProductByArrival from './ProductByArrival';
+import { ToastContainer, toast } from 'react-toastify';
+import NavbarPage from '../Navbars/MaterialNavbar';
+
+//https://codepen.io/Thunderboy/pen/LxjrgB
 
 const Header = () => {
     return (
         <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
           <Container fluid>
+          <NavbarPage />
             <div className="header-body">
               <ProductByArrival />
               <ProductBySell />
             </div>
+            <ToastContainer />
           </Container>
         </div>
     );

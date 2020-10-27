@@ -11,11 +11,11 @@ const {
     userById,
     read,
     update,
-    isAdminValidation
+    isAdminValidator
 } = require('../controllers/user');
 
 // Admin Validator
-router.get('/secret/:userId', requireSignin, isAuth, isAdmin, isAdminValidation);
+router.get('/secret/:userId', requireSignin, isAuth, isAdmin, isAdminValidator);
 
 router.get('/user/:userId', requireSignin, isAuth, read);
 router.put('/user/:userId', requireSignin, isAuth, update);

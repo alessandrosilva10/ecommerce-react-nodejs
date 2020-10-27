@@ -23,7 +23,7 @@ const ProductByArrival = () => {
 
     return(
         <><br/>
-            <h1 style={{color: 'white'}}>Últimos produtos cadastrados no sistema</h1>
+            <h1 style={{color: 'white'}}>Últimos produtos cadastrados</h1>
             <Row>
             {productsByArrival.map((product, index) => (
             <Col lg="6" xl="3">              

@@ -34,7 +34,6 @@ ReactDOM.render(
       {!isAuthenticated() && <Route path="/auth" render={props => <AuthLayout {...props} />} />}
       <Route path="/admin/index" render={props => <AdminLayout {...props} />} />
       <Route path="/admin/dashboard" exact component={Dashboard}  />
-      <Redirect from="/" to="/admin/index" />
       <Redirect from="*" to="/admin/index" />
     </Switch>
   </BrowserRouter>,

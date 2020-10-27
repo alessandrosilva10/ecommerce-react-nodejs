@@ -1,0 +1,125 @@
+
+
+#forbidden {
+	background-color: #0000AA;
+	font-family: "Courier New", Menlo;
+	font-size: 13px;
+	font-weight: bold;
+	color: #ffffff;
+}
+#content {
+	margin: 0 auto;
+	padding-top: 80px;
+	width: 640px;
+	height: 990px;
+	text-align: left;
+}
+#forbidden h1.headline {
+	margin: 0 auto;
+	background-color: #AAAAAA;
+	color: #0000AA;
+	padding: 2px 5px 2px 5px;
+	font-size: 14px;
+	width: 230px;
+	min-width: 130px;
+	text-align: center;
+	float: center;
+}
+
+#forbidden p {
+	line-height: 1.5em;
+}
+
+#forbidden .continue {
+	text-align: center;
+}
+
+#konami {
+	position: fixed;
+	right:-900px;
+	width: 900px;
+}
+
+#forbidden .blink {
+	-webkit-animation: blink .75s linear infinite;
+	-moz-animation: blink .75s linear infinite;
+	-ms-animation: blink .75s linear infinite;
+	-o-animation: blink .75s linear infinite;
+	animation: blink .75s linear infinite;
+}
+
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@-moz-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@-ms-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@-o-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+.wordart {
+	color: #333;
+	-webkit-text-fill-color: transparent;
+
+	position: relative;
+	display: inline-block;
+
+	font: bold 48px "Arial Narrow", sans-serif;
+}
+
+.wordart:before {
+	content: attr(title);
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2;
+
+	background: -webkit-linear-gradient(left, rgb(176,9,151) 0%, rgb(227,33,107) 10%, rgb(249,96,30) 25%, rgb(255,180,18) 40%, rgb(255,216,45) 50%, rgb(185,221,23) 61%, rgb(65,160,60) 75%, rgb(19,54,180) 90%, rgb(116,27,157) 100%);
+
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.wordart:after {
+	content: attr(title);
+
+	position: absolute;
+	z-index: 199;
+	left: -6px;
+	bottom: -10px;
+
+	z-index: 1;
+
+
+	-webkit-text-fill-color: #000;
+	-webkit-transform: skew(40deg, 0deg) scaleY(.5);
+
+	opacity: .3;
+}

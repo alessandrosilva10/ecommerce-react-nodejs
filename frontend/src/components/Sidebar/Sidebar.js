@@ -60,12 +60,12 @@ class Sidebar extends React.Component {
 
   };
 
-  
+  role = undefined;
 
   constructor(props) {
     super(props);
     this.activeRoute.bind(this);
-      var role = 0;
+      
       if(localStorage.getItem('token_jwt')){
         this.role = JSON.parse(localStorage.getItem('token_jwt')).user.role;
       } 
@@ -89,6 +89,9 @@ class Sidebar extends React.Component {
   };
   // creates the links that appear in the left menu / Sidebar
   createLinks = routes => {
+    
+    routes = routes.filter(function(el) { return el.path != "/register" && el.path != "/login" ; });
+    console.log(routes)
     return routes.map((prop, key) => {
       return (
         <NavItem key={key}>
@@ -99,7 +102,7 @@ class Sidebar extends React.Component {
             activeClassName="active"
           >
             <i className={prop.icon} />
-            {prop.name}
+            <span style={{color: '#525f7f'}}>{prop.name}</span>
           </NavLink>
         </NavItem>
       );
@@ -257,28 +260,32 @@ class Sidebar extends React.Component {
             <Nav className="mb-md-3" navbar>
               {this.role === 1 &&
                 <NavItem>
-                  <NavLink href="/admin/dashboard">
-                    <i className="ni ni-spaceship" />
-                    Dashboard
+                  <NavLink>
+                  <i className="ni ni-spaceship" />
+                    <Link to="/admin/dashboard">
+                      <span style={{color: '#525f7f'}}>Dashboard</span>
+                    </Link>
                   </NavLink>
                 </NavItem> 
-              }
+              }             
+              {this.role === undefined  &&
+              <>
               <NavItem>
                 <NavLink href="/auth/login">
                   <i className="ni ni-spaceship" />
-                  Entrar
+                  <span style={{color: '#525f7f'}}>Entrar</span>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/auth/login">
                   <i className="ni ni-palette" />
-                  Cadastrar
+                  <span style={{color: '#525f7f'}}>Cadastrar</span>
                 </NavLink>
-              </NavItem>
+              </NavItem></>}
               <NavItem>
                 <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/alerts?ref=adr-admin-sidebar">
                   <i className="ni ni-ui-04" />
-                  Sair
+                  <span style={{color: '#525f7f'}}>Sair</span>
                 </NavLink>
               </NavItem>
             </Nav> 

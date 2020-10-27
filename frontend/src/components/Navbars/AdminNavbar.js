@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 // reactstrap components
 import {
@@ -36,17 +36,30 @@ import {
 } from "reactstrap";
 import MenuNavBar from './MenuNavBar';
 
-class AdminNavbar extends React.Component {
-  logoutUser = () => {
-    alert("Clicado");
-  }
+import { ToastContainer, toast } from 'react-toastify';
 
-  render() {
+const AdminNavbar = () => {
+  const logoutUser = () => {
+    localStorage.removeItem("token_jwt");
+    toast.warning("Usuário deslogado com sucesso");
+    return <Link to="/admin/index" />
+  }
+/*
+  const isFirstRun = useRef(true);
+  useEffect (() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
+    logoutUser();
+    return <Sidebar />
+  });
+*/
     return (
       <>
         <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
         
-          <Container fluid><MenuNavBar />
+          <Container fluid>{/*<MenuNavBar />*/}
             <Link
               className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
               to="/"
@@ -64,6 +77,7 @@ class AdminNavbar extends React.Component {
                 </InputGroup>
               </FormGroup>
             </Form>
+            <ToastContainer />
             <Nav className="align-items-center d-none d-md-flex" navbar>
               <UncontrolledDropdown nav>
                 <DropdownToggle className="pr-0" nav>
@@ -71,7 +85,7 @@ class AdminNavbar extends React.Component {
                     <span className="avatar avatar-sm rounded-circle">
                       <img
                         alt="..."
-                        //src={require("assets/img/theme/team-4-800x800.jpg")}
+                        src={require("assets/img/theme/Men-Profile-Image.png")}
                       />
                     </span>
                     <Media className="ml-2 d-none d-lg-block">
@@ -104,7 +118,7 @@ class AdminNavbar extends React.Component {
                   <DropdownItem divider />
                   <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
                     <i className="ni ni-user-run" />
-                    <span onClick={this.logoutUser}>Sair</span>
+                    <span onClick={logoutUser}>Sair</span>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -114,7 +128,6 @@ class AdminNavbar extends React.Component {
         
       </>
     );
-  }
 }
 
 export default AdminNavbar;

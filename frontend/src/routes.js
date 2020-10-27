@@ -74,5 +74,12 @@ var routes = [
     component: Login,
     layout: "/auth"
   },
+  {
+    path: "/register",
+    name: "Register",
+    icon: "fas fa-ring",
+    component: Register,
+    layout: "/auth"
+  },
 ];
 export default routes;
