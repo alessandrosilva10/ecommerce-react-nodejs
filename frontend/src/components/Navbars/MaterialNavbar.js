@@ -25,7 +25,7 @@ render() {
             
         <MDBDropdown>
         <MDBDropdownToggle nav caret>
-            <div style={{color: "rgb(17, 205, 239)"}} className="d-none d-md-inline"><FontAwesomeIcon icon={faDollarSign} /> Ofertas</div>
+            <div style={{color: "#8898aa"}} className="d-none d-md-inline"><FontAwesomeIcon icon={faDollarSign} /> Ofertas</div>
         </MDBDropdownToggle>
         <MDBDropdownMenu className="dropdown-default">
             <MDBDropdownItem href="#!">Action</MDBDropdownItem>
@@ -38,16 +38,16 @@ render() {
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
             <MDBNavItem active>
-              <MDBNavLink style={{color: "rgb(17, 205, 239)"}} to="#!"><FontAwesomeIcon icon={faTshirt} /> Roupa Masculina</MDBNavLink>
+              <MDBNavLink style={{color: "#8898aa"}} to="#!"><FontAwesomeIcon icon={faTshirt} /> Roupa Masculina</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink style={{color: "rgb(17, 205, 239)"}}  to="#!"><FontAwesomeIcon icon={faTshirt} /> Roupa Feminina</MDBNavLink>
+              <MDBNavLink style={{color: "#8898aa"}}  to="#!"><FontAwesomeIcon icon={faTshirt} /> Roupa Feminina</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink style={{color: "rgb(17, 205, 239)"}}  to="#!"><FontAwesomeIcon icon={faShoePrints} /> Sapato Masculino</MDBNavLink>
+              <MDBNavLink style={{color: "#8898aa"}}  to="#!"><FontAwesomeIcon icon={faShoePrints} /> Sapato Masculino</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink style={{color: "rgb(17, 205, 239)"}}  to="#!"><FontAwesomeIcon icon={faTshirt} /> Sapato Feminino</MDBNavLink>
+              <MDBNavLink style={{color: "#8898aa"}}  to="#!"><FontAwesomeIcon icon={faShoePrints} /> Sapato Feminino</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBDropdown>
@@ -66,22 +66,22 @@ render() {
           <MDBNavbarNav right>
           <MDBNavItem>
               <MDBNavLink className="waves-effect waves-light" to="#!">
-                <MDBIcon style={{color: "rgb(17, 205, 239)"}} fab icon="facebook" />
+                <MDBIcon style={{color: "darkblue"}} fab icon="facebook" />
               </MDBNavLink>
             </MDBNavItem>
           <MDBNavItem>
               <MDBNavLink className="waves-effect waves-light" to="#!">
-                <MDBIcon style={{color: "rgb(17, 205, 239)"}} fab icon="instagram" />
+                <MDBIcon style={{color: "brown"}} fab icon="instagram" />
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink className="waves-effect waves-light" to="#!">
-                <MDBIcon style={{color: "rgb(17, 205, 239)"}} fab icon="twitter" />
+                <MDBIcon style={{color: "#00ffff"}} fab icon="twitter" />
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink className="waves-effect waves-light" to="#!">
-                <MDBIcon style={{color: "rgb(17, 205, 239)"}} fab icon="google-plus-g" />
+                <MDBIcon style={{color: "#ff3333"}} fab icon="google-plus-g" />
               </MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>

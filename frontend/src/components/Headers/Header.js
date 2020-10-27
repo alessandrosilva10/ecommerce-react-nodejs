@@ -27,7 +27,8 @@ import NavbarPage from '../Navbars/MaterialNavbar';
 
 const Header = () => {
     return (
-        <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
+      //bg-gradient-info
+        <div style={{backgroundColor: 'cornflowerblue'}} className="header pb-8 pt-5 pt-md-8">
           <Container fluid>
           <NavbarPage />
             <div className="header-body">

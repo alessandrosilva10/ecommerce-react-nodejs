@@ -23,7 +23,7 @@ const ProductByArrival = () => {
 
     return(
         <><br/>
-            <h1 style={{color: 'white'}}>Últimos produtos cadastrados</h1>
+            <h1 style={{color: 'white', paddingTop: '40px'}}>Últimos produtos cadastrados</h1>
             <Row>
             {productsByArrival.map((product, index) => (
             <Col lg="6" xl="3">              
@@ -42,34 +42,34 @@ const ProductByArrival = () => {
                         cursor: "pointer",
                         bottom: "28px",
                         height: "35px",
-                        background: "#11cdef",
+                        background: "cornflowerblue",
                         color: "white",
                         borderRadius: "4px",
-                        borderColor: "#11cdef",
-                        border: "1px solid #11cdef",
+                        borderColor: "cornflowerblue",
+                        border: "1px solid cornflowerblue",
                         fontWeight: "700",
                         fontSize: ".8em",
-                        marginLeft: '5px',
+                        marginLeft: '40px',
                         marginTop: '20px',
                         }}
-                        onClick={() => alert("Produto " + product.name + " adicionado ao carrinho!")}><i class="far fa-money-bill-alt"></i> Adicionar no Carrinho</button>
+                        onClick={() => alert("Produto " + product.name + " adicionado ao carrinho!")}><i class="far fa-money-bill-alt"></i> Comprar</button>
     
                         <button 
                         style={{
                         cursor: "pointer",
                         bottom: "28px",
                         height: "35px",
-                        background: "#11cdef",
+                        background: "cornflowerblue",
                         color: "white",
                         borderRadius: "4px",
-                        borderColor: "#11cdef",
-                        border: "1px solid #11cdef",
+                        borderColor: "cornflowerblue",
+                        border: "1px solid cornflowerblue",
                         fontWeight: "700",
                         fontSize: ".8em",
-                        marginLeft: '15px',
+                        marginLeft: '60px',
                         marginTop: '20px',
                         }}
-                        onClick={() => alert("Produto " + product.name + " adicionado ao carrinho!")}><i class="far fa-eye"></i> Ver o Produto</button>
+                        onClick={() => alert("Produto " + product.name + " adicionado ao carrinho!")}><i class="far fa-eye"></i> Detalhes</button>
                     </div>          
                 </CardBody>
                 </Card>
